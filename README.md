@@ -23,7 +23,7 @@ There are two usage scenarios handled within the Aion library. These are...
 
 * There is a piece of functionality that must be executable after a minimum
   amount of time.
-* There is a piece of functionality that must be executed as regular intervals.
+* There is a piece of functionality that must be executed at regular intervals.
 
 The first of these correlates with the use of setTimeout() and the second with
 the use of setInterval(). Aion goes beyond these basic scenarios a little by
