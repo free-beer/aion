@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Test The Basic Duration Functionality</title>
+</head>
+<body>
+   <h4>Test</h4>
+   <p>Tests that a function can be scheduled for later execution.</p>
+
+   <h4>Expected Result</h4>
+   <p>After 5 seconds a popup should appear.</p>
+
+   <script type="text/javascript" src="../aion-2.0.0.min.js"></script>
+   <script type="text/javascript">
+      function showAlert() {
+         alert("The duration has expired!");
+      }
+
+      var duration = Aion.in(5, "seconds").do(showAlert).start();
+      //duration.start();
+   </script>
+</body>
+</html>

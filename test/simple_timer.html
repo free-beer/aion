@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>A Simple Timer</title>
+</head>
+<body>
+<h4>Test</h4>
+<p>
+   This file contains a simple timer application.
+</p>
+
+<h4>Expected Result</h4>
+<p>
+   The timer below should increment over time (there is no limit to how long it
+   will run for).
+</p>
+
+<div>
+   Timer: <span id="timer">00:00:00</span>
+</div>
+
+<script type="text/javascript" src="../aion-2.0.0.min.js"></script>
+<script type="text/javascript">
+   function formatDuration(duration) {
+      var seconds = Math.round(duration / 1000),
+          pieces  = [];
+
+      if(seconds >= 86400) {
+         pieces.push(Math.floor(seconds / 86400));
+      }
+      pieces.push(Math.floor((seconds % 86400) / 3600));
+      pieces.push(Math.floor((seconds % 3600) / 60));
+      pieces.push(seconds % 60);
+
+      for(var i = 0; i < pieces.length; i++) {
+         pieces[i] = "" + (pieces[i] < 10 ? "0" + pieces[i] : pieces[i]);
+      }
+
+      return(pieces.join(":"));
+   }
+
+   function updateTimer(interval) {
+      var element = document.getElementById("timer");
+
+      element.innerHTML = formatDuration(interval.expended());
+   }
+
+   Aion.every(1, "second").do(updateTimer).start();
+</script>
+</body>
+</html>

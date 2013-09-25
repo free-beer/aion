@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Test The Duration Cancellation Functionality</title>
+</head>
+<body>
+<h4>Test</h4>
+<p>That functions scheduled for delayed execution can be cancelled.</p>
+
+<h4>Expected Result</h4>
+<p>
+   Two functions will be scheduled for delayed execution. The first will be
+   cancelled before it gets a chance to fire. Only a single popup alert will
+   be displayed for the second function.
+</p>
+
+<script type="text/javascript" src="../aion-2.0.0.min.js"></script>
+<script type="text/javascript">
+   function firstAlert() {
+      alert("This is the alert for the first function.");
+   }
+
+   function secondAlert() {
+      alert("This is the alert for the second function.");
+   }
+
+   var durations = [];
+
+   durations.push(Aion.in(5, "seconds").do(firstAlert).start());
+   durations.push(Aion.in(5, "seconds").do(secondAlert).start());
+   durations[0].cancel();
+</script>
+</body>
+</html>

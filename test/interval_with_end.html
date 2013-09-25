@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Test The Interval With Time Limit</title>
+</head>
+<body>
+<h4>Test</h4>
+<p>
+   That functions scheduled for repeated execution are performed up to a set
+   limit.
+</p>
+
+<h4>Expected Result</h4>
+<p>
+   A line of text will be appended to the end of this document once a second for
+   5 seconds.
+</p>
+
+<script type="text/javascript" src="../aion-2.0.0.min.js"></script>
+<script type="text/javascript">
+   function addLine() {
+      var element = document.createElement("P");
+
+      element.innerHTML = "This is a line that has been added to the document.";
+      document.body.appendChild(element);
+   }
+
+   Aion.every(1, "second").do(addLine).for(5, "seconds").start();
+</script>
+</body>
+</html>

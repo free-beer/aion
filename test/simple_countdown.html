@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>A Simple 10 Second Countdown</title>
+</head>
+<body>
+<h4>Test</h4>
+<p>
+   This file contains a simple countdown application.
+</p>
+
+<h4>Expected Result</h4>
+<p>
+   The counter should count down for 10 seconds then a popup alert will be
+   displayed to indicate that the interval has completed.
+</p>
+
+<div>
+   Countdown: <span id="countdown">10</span>
+</div>
+
+<script type="text/javascript" src="../aion-2.0.0.min.js"></script>
+<script type="text/javascript">
+
+   function decrementCount(interval) {
+      var remaining = interval.data - 1,
+          element   = document.getElementById("countdown");
+
+      interval.data = remaining;
+      element.innerHTML = "" + remaining;
+   }
+
+   function intervalComplete() {
+      alert("Countdown has completed.");
+   }
+
+   //var interval = Aion.every(1, "second").for(10, "seconds").do(decrementCount).then(intervalComplete);
+   var interval = Aion.every(1).for(10).do(decrementCount).then(intervalComplete);
+
+   interval.data = 10;
+   interval.start();
+</script>
+</body>
+</html>
